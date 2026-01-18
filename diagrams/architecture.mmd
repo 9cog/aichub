@@ -1,0 +1,21 @@
+graph TD
+    subgraph Client
+        A[React/Vite Frontend] --> B{Capacitor Bridge}
+        B --> C[Android Native Shell]
+    end
+
+    subgraph Backend
+        D[Main API Gateway] --> E[User Service]
+        D --> F[Chat Service]
+        D --> G[Billing Service]
+    end
+
+    subgraph AI
+        I[AI Model Proxy] --> J[Mars Models]
+        I --> K[Mercury Models]
+        I --> L[External APIs]
+    end
+
+    C --> D
+    A --> D
+    F --> I

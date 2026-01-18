@@ -1,0 +1,41 @@
+erDiagram
+    USER {
+        UUID id PK
+        string username
+        string email
+        USER_ROLE role
+        SUB_TIER subscription_tier
+    }
+
+    CHARACTER {
+        UUID id PK
+        string name
+        string description
+        UUID creator_id FK
+    }
+
+    LOREBOOK {
+        UUID id PK
+        string name
+        UUID creator_id FK
+    }
+
+    CHAT {
+        UUID id PK
+        UUID user_id FK
+        UUID character_id FK
+    }
+
+    MESSAGE {
+        UUID id PK
+        UUID chat_id FK
+        MESSAGE_ROLE role
+        string content
+    }
+
+    USER ||--o{ CHARACTER : "creates"
+    USER ||--o{ LOREBOOK : "creates"
+    USER ||--o{ CHAT : "participates_in"
+    CHARACTER ||--o{ CHAT : "is_in"
+    CHAT ||--|{ MESSAGE : "contains"
+    CHARACTER }o--o{ LOREBOOK : "uses"
