@@ -1,0 +1,147 @@
+```z++
+-- Basic Types
+URL == STRING
+TIMESTAMP == INTEGER
+UUID == STRING
+
+-- Enumerations
+
+-- Subscription Tiers
+SUB_TIER ::= free | mercury | mars
+
+-- AI Model Providers
+AI_PROVIDER ::= openai | anthropic | openrouter | google | elevenlabs | novelai | kobold | ooba
+
+-- Content Rating
+CONTENT_RATING ::= sfw | nsfw
+
+-- User Roles
+USER_ROLE ::= user | admin | moderator
+
+-- Message Role
+MESSAGE_ROLE ::= user | bot
+```
+```z++
+-- Schemas
+
+-- User Schema
+USER_SCHEMA ::=
+  id: UUID
+  username: STRING
+  email: STRING
+  role: USER_ROLE
+  subscription_tier: SUB_TIER
+  subscription_expires: TIMESTAMP
+  blocked_users: SEQ[UUID]
+  blocked_tags: SEQ[STRING]
+  created_at: TIMESTAMP
+
+-- Character Schema
+CHARACTER_SCHEMA ::=
+  id: UUID
+  name: STRING
+  description: STRING
+  personality: STRING
+  scenario: STRING
+  first_mes: STRING
+  mes_example: STRING
+  creator_notes: STRING
+  system_prompt: STRING
+  avatar: URL
+  tags: SEQ[STRING]
+  extensions: SEQ[UUID]
+  character_book: UUID
+  creator_id: UUID
+  created_at: TIMESTAMP
+  updated_at: TIMESTAMP
+
+-- Lorebook Schema
+LOREBOOK_SCHEMA ::=
+  id: UUID
+  name: STRING
+  description: STRING
+  entries: SEQ[LOREBOOK_ENTRY_SCHEMA]
+  creator_id: UUID
+  created_at: TIMESTAMP
+
+-- Lorebook Entry Schema
+LOREBOOK_ENTRY_SCHEMA ::=
+  keys: SEQ[STRING]
+  content: STRING
+  enabled: BOOLEAN
+  case_sensitive: BOOLEAN
+  priority: INTEGER
+  insertion_order: INTEGER
+
+-- Chat Schema
+CHAT_SCHEMA ::=
+  id: UUID
+  character_id: UUID
+  user_id: UUID
+  messages: SEQ[MESSAGE_SCHEMA]
+  is_closed: BOOLEAN
+  created_at: TIMESTAMP
+
+-- Message Schema
+MESSAGE_SCHEMA ::=
+  id: UUID
+  chat_id: UUID
+  turn: INTEGER
+  role: MESSAGE_ROLE
+  content: STRING
+  timestamp: TIMESTAMP
+  swiped_from: OPTIONAL[UUID]
+```
+```z++
+-- State Space
+
+CHUB_AI_SYSTEM ::=
+  users: USER_ID -> USER_SCHEMA
+  characters: CHARACTER_ID -> CHARACTER_SCHEMA
+  lorebooks: LOREBOOK_ID -> LOREBOOK_SCHEMA
+  chats: CHAT_ID -> CHAT_SCHEMA
+
+-- Operations
+
+-- Create User Operation
+CREATE_USER(username: STRING, email: STRING) -> (USER_SCHEMA, CHUB_AI_SYSTEM)
+PRE
+  username ∉ dom(users) ∧ email ∉ dom(users)
+POST
+  let new_user = {
+    id = new_uuid(),
+    username = username,
+    email = email,
+    role = user,
+    subscription_tier = free,
+    subscription_expires = 0,
+    blocked_users = {},
+    blocked_tags = {},
+    created_at = now()
+  }
+  users' = users ∪ {new_user.id ↦ new_user}
+
+-- Create Character Operation
+CREATE_CHARACTER(user_id: UUID, character_data: CHARACTER_SCHEMA) -> (CHARACTER_SCHEMA, CHUB_AI_SYSTEM)
+PRE
+  user_id ∈ dom(users)
+POST
+  let new_character = character_data ⊕ { creator_id = user_id, created_at = now(), updated_at = now() }
+  characters' = characters ∪ {new_character.id ↦ new_character}
+
+-- Send Message Operation
+SEND_MESSAGE(user_id: UUID, chat_id: UUID, content: STRING) -> (MESSAGE_SCHEMA, CHUB_AI_SYSTEM)
+PRE
+  user_id ∈ dom(users) ∧ chat_id ∈ dom(chats)
+POST
+  let chat = chats(chat_id)
+  let new_message = {
+    id = new_uuid(),
+    chat_id = chat_id,
+    turn = #chat.messages + 1,
+    role = user,
+    content = content,
+    timestamp = now()
+  }
+  chats' = chats ⊕ {chat_id ↦ chat ⊕ { messages = chat.messages ∪ <new_message> }}
+```
