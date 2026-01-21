@@ -13,9 +13,9 @@ This repository contains a comprehensive reverse-engineering analysis of the Chu
 | `analysis_summary.md` | High-level summary of the application's architecture, features, and key findings. |
 | `technical_documentation.md` | Detailed technical documentation with Mermaid diagrams covering system architecture, data models, and API design. |
 | `aichub_formal_spec.zpp` | Formal Z++ specification defining the system's types, schemas, state space, and core operations. |
-| `decompiled/` | Decompiled Java source code from the APK's `classes.dex` file. |
-| `apk_contents/` | Extracted contents of the original APK file. |
-| `zip_contents/` | Extracted contents of the companion ZIP archive. |
+| `config/` | Capacitor configuration files extracted from the APK. |
+| `diagrams/` | Mermaid diagram source files and rendered PNG images. |
+| `docs/decompiled/` | Decompiled Java source code from the APK's `classes.dex` file. |
 
 ## Key Findings
 
