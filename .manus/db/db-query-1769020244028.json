@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS subscriptionHistory (\n  id int NOT NULL AUTO_INCREMENT,\n  userId int NOT NULL,\n  tier enum('free','mercury','mars') NOT NULL,\n  startedAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  expiresAt timestamp,\n  paymentMethod varchar(64),\n  paymentId varchar(255),\n  createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  PRIMARY KEY (id)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3toqCak8FVUcNAx.689877d42b92 --database FshppYtx2ek6kpisYKmh25 --execute CREATE TABLE IF NOT EXISTS subscriptionHistory (\n  id int NOT NULL AUTO_INCREMENT,\n  userId int NOT NULL,\n  tier enum('free','mercury','mars') NOT NULL,\n  startedAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  expiresAt timestamp,\n  paymentMethod varchar(64),\n  paymentId varchar(255),\n  createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  PRIMARY KEY (id)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 58
+}

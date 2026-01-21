@@ -1,0 +1,36 @@
+{
+  "query": "SHOW CREATE TABLE characters;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3toqCak8FVUcNAx.689877d42b92 --database FshppYtx2ek6kpisYKmh25 --execute SHOW CREATE TABLE characters;",
+  "rows": [
+    {
+      "Table": "characters",
+      "Create Table": "CREATE TABLE `characters` ("
+    }
+  ],
+  "messages": [
+    "  `id` int(11) NOT NULL AUTO_INCREMENT,",
+    "  `creatorId` int(11) NOT NULL,",
+    "  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,",
+    "  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,",
+    "  `personality` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,",
+    "  `scenario` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,",
+    "  `firstMessage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,",
+    "  `exampleMessages` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,",
+    "  `systemPrompt` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,",
+    "  `creatorNotes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,",
+    "  `avatarUrl` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,",
+    "  `tags` json DEFAULT NULL,",
+    "  `contentRating` enum('sfw','nsfw') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'sfw',",
+    "  `isPublic` tinyint(1) NOT NULL DEFAULT '0',",
+    "  `lorebookId` int(11) DEFAULT NULL,",
+    "  `chatCount` int(11) NOT NULL,",
+    "  `likeCount` int(11) NOT NULL,",
+    "  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,",
+    "  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,",
+    "  PRIMARY KEY (`id`) /*T![clustered_index] CLUSTERED */",
+    ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+  ],
+  "stdout": "Table\tCreate Table\ncharacters\tCREATE TABLE `characters` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `creatorId` int(11) NOT NULL,\n  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,\n  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `personality` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `scenario` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `firstMessage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `exampleMessages` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `systemPrompt` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `creatorNotes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `avatarUrl` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,\n  `tags` json DEFAULT NULL,\n  `contentRating` enum('sfw','nsfw') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'sfw',\n  `isPublic` tinyint(1) NOT NULL DEFAULT '0',\n  `lorebookId` int(11) DEFAULT NULL,\n  `chatCount` int(11) NOT NULL,\n  `likeCount` int(11) NOT NULL,\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`id`) /*T![clustered_index] CLUSTERED */\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci\n",
+  "stderr": "",
+  "execution_time_ms": 60
+}

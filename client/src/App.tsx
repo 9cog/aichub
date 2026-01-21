@@ -5,31 +5,56 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Discover from "./pages/Discover";
+import CharacterView from "./pages/CharacterView";
+import CharacterCreate from "./pages/CharacterCreate";
+import CharacterEdit from "./pages/CharacterEdit";
+import Chat from "./pages/Chat";
+import ChatList from "./pages/ChatList";
+import MyCharacters from "./pages/MyCharacters";
+import Lorebooks from "./pages/Lorebooks";
+import LorebookEdit from "./pages/LorebookEdit";
+import Personas from "./pages/Personas";
+import Settings from "./pages/Settings";
+import Admin from "./pages/Admin";
+import CharacterImport from "./pages/CharacterImport";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
+  const { user, loading } = useAuth();
+  
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
+      {/* Public routes */}
+      <Route path="/" component={Home} />
+      <Route path="/discover" component={Discover} />
+      <Route path="/character/:id" component={CharacterView} />
+      
+      {/* Protected routes */}
+      <Route path="/create" component={CharacterCreate} />
+      <Route path="/character/:id/edit" component={CharacterEdit} />
+      <Route path="/chat/:id" component={Chat} />
+      <Route path="/chats" component={ChatList} />
+      <Route path="/my-characters" component={MyCharacters} />
+      <Route path="/import" component={CharacterImport} />
+      <Route path="/lorebooks" component={Lorebooks} />
+      <Route path="/lorebook/:id" component={LorebookEdit} />
+      <Route path="/personas" component={Personas} />
+      <Route path="/settings" component={Settings} />
+      
+      {/* Admin routes */}
+      <Route path="/admin" component={Admin} />
+      
+      <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
   );
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
+      <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
           <Router />

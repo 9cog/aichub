@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE users \nADD COLUMN subscriptionTier enum('free','mercury','mars') NOT NULL DEFAULT 'free',\nADD COLUMN subscriptionExpiresAt timestamp NULL,\nADD COLUMN blockedUsers json NULL,\nADD COLUMN blockedTags json NULL,\nADD UNIQUE INDEX users_openId_unique (openId);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3toqCak8FVUcNAx.689877d42b92 --database FshppYtx2ek6kpisYKmh25 --execute ALTER TABLE users \nADD COLUMN subscriptionTier enum('free','mercury','mars') NOT NULL DEFAULT 'free',\nADD COLUMN subscriptionExpiresAt timestamp NULL,\nADD COLUMN blockedUsers json NULL,\nADD COLUMN blockedTags json NULL,\nADD UNIQUE INDEX users_openId_unique (openId);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1793
+}

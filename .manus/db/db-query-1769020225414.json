@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE IF NOT EXISTS lorebookEntries (\n  id int NOT NULL AUTO_INCREMENT,\n  lorebookId int NOT NULL,\n  `keys` json,\n  content text,\n  enabled boolean NOT NULL DEFAULT true,\n  caseSensitive boolean NOT NULL DEFAULT false,\n  priority int NOT NULL DEFAULT 10,\n  insertionOrder int NOT NULL DEFAULT 0,\n  depth int NOT NULL DEFAULT 4,\n  createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  updatedAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (id)\n);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3toqCak8FVUcNAx.689877d42b92 --database FshppYtx2ek6kpisYKmh25 --execute CREATE TABLE IF NOT EXISTS lorebookEntries (\n  id int NOT NULL AUTO_INCREMENT,\n  lorebookId int NOT NULL,\n  `keys` json,\n  content text,\n  enabled boolean NOT NULL DEFAULT true,\n  caseSensitive boolean NOT NULL DEFAULT false,\n  priority int NOT NULL DEFAULT 10,\n  insertionOrder int NOT NULL DEFAULT 0,\n  depth int NOT NULL DEFAULT 4,\n  createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  updatedAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (id)\n);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 60
+}
