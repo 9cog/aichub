@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://avatars.charhub.io/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, interactive-widget=resizes-content" />
+    <script defer data-domain="chub.ai" src="https://odo.chub.ai/js/script.local.js"></script>
+    <meta name="juicyads-site-verification" content="3cf04aa7d11b4fb1a984aaa24e7a10e5">
+    <link rel="icon" href="/favicon/favicon.ico" />
+    <link rel="manifest" href="/assets/manifest-BdAyOY0s.json" />
+    <title>Chub AI</title>
+    <meta name="theme-color" content="#001529">
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_EN" />
+    <meta property="og:site_name" content="Chub AI" />
+  <script type="module" crossorigin src="/assets/index-B0lmOk0B.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Cz38bezi.css">
+</head>
+
+<body class="no-scrollbar-mobile">
+<div id="root" class="no-scrollbar-mobile"></div>
+
+</body>
+
+<!-- Google tag (gtag.js) -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag("js", new Date());
+    gtag("config", "AW-11258965271");
+    gtag("config", "G-184HP71YWC");
+    window.addEventListener('error', function(event) {
+        if (event.message.includes('error loading dynamically imported module')) {
+            console.log('Using outdated app. Reloading.');
+            caches.keys().then(function(names) {
+                return Promise.all(names.map(name => caches.delete(name)));
+            }).then(function() {
+                location.reload(true);
+            }).catch(function(error) {
+                console.error('Cache clearing failed:', error);
+                location.reload(true);
+            });
+        }
+    });
+</script>
+</html>
