@@ -49,3 +49,13 @@
 - [x] Responsive layout
 - [x] Dashboard layout for authenticated users
 - [x] Landing page for visitors
+
+
+## Bugs
+- [ ] Fix API returning HTML instead of JSON (tRPC routing issue)
+
+- [x] Sync project to GitHub repository
+
+- [x] Add sample characters (various types)
+- [x] Add sample lorebooks with entries
+- [x] Add sample personas

@@ -1,0 +1,30 @@
+{
+  "query": "SELECT id, name FROM lorebooks;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3toqCak8FVUcNAx.689877d42b92 --database FshppYtx2ek6kpisYKmh25 --execute SELECT id, name FROM lorebooks;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "The Celestial Observatory"
+    },
+    {
+      "id": "2",
+      "name": "Trattoria della Nonna"
+    },
+    {
+      "id": "3",
+      "name": "The Prometheus Codex"
+    },
+    {
+      "id": "4",
+      "name": "Noir City Chronicles"
+    },
+    {
+      "id": "5",
+      "name": "The Enchanted Forest"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n1\tThe Celestial Observatory\n2\tTrattoria della Nonna\n3\tThe Prometheus Codex\n4\tNoir City Chronicles\n5\tThe Enchanted Forest\n",
+  "stderr": "",
+  "execution_time_ms": 49
+}
