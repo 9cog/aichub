@@ -1,0 +1,4 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Disallow: /nogooglebot/
+Sitemap: https://chub.ai/sitemaps/base.xml

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.google.com/schemas/sitemap/0.84">
+    <sitemap>
+        <loc>https://chub.ai/sitemaps/static.xml</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://chub.ai/sitemaps/tags.xml</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://chub.ai/sitemaps/users.xml</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://chub.ai/sitemaps/characters.xml</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://chub.ai/sitemaps/lorebooks.xml</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://chub.ai/sitemaps/presets.xml</loc>
+    </sitemap>
+    <sitemap>
+        <loc>https://chub.ai/sitemaps/stages.xml</loc>
+    </sitemap>
+</sitemapindex>

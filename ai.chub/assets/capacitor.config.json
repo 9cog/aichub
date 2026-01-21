@@ -1,0 +1,27 @@
+{
+	"appId": "ai.chub",
+	"appName": "Chub",
+	"webDir": "dist",
+	"server": {
+		"hostname": "127.0.0.1",
+		"cleartext": true,
+		"allowNavigation": [
+			"*"
+		],
+		"androidScheme": "https"
+	},
+	"ios": {},
+	"plugins": {
+		"GoogleAuth": {
+			"clientId": "31278335968-s588kolr7gl5o4p3lb49l3ou6nq2aevo.apps.googleusercontent.com",
+			"iosClientId": "31278335968-s588kolr7gl5o4p3lb49l3ou6nq2aevo.apps.googleusercontent.com",
+			"androidClientId": "31278335968-d7rm46ovklg7m61u2n1p9vtvm1h5b2ib.apps.googleusercontent.com",
+			"scopes": [
+				"profile",
+				"email"
+			],
+			"serverClientId": "31278335968-d7rm46ovklg7m61u2n1p9vtvm1h5b2ib.apps.googleusercontent.com",
+			"forceCodeForRefreshToken": true
+		}
+	}
+}
