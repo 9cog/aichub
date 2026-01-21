@@ -45,6 +45,11 @@ interface ProviderConfig {
   };
 }
 
+interface ChubOfflineProviderOptions {
+  jancogUrl?: string;
+  useHttps?: boolean;
+}
+
 interface ModelMapping {
   chubModel: string;
   localModel: string;
@@ -109,9 +114,20 @@ export class ChubOfflineProvider extends EventEmitter {
   private availableModels: string[] = [];
   private systemRam: number = 16; // Default assumption
 
-  constructor(jancogUrl: string = 'http://localhost:1337') {
+  constructor(options: ChubOfflineProviderOptions | string = {}) {
     super();
-    this.jancogUrl = jancogUrl;
+    // Support both legacy string argument and new options object
+    if (typeof options === 'string') {
+      this.jancogUrl = options;
+    } else {
+      const { jancogUrl = 'http://localhost:1337', useHttps = false } = options;
+      // Convert to HTTPS if requested (for non-localhost URLs)
+      if (useHttps && !jancogUrl.includes('localhost') && jancogUrl.startsWith('http://')) {
+        this.jancogUrl = jancogUrl.replace('http://', 'https://');
+      } else {
+        this.jancogUrl = jancogUrl;
+      }
+    }
     this.initialize();
   }
 
@@ -349,12 +365,17 @@ export class ChubOfflineProvider extends EventEmitter {
     };
 
     try {
+      const apiKey = process.env.CHUB_API_KEY;
+      if (this.isOnline && !apiKey) {
+        throw new Error('CHUB_API_KEY environment variable is required for online mode');
+      }
+
       const response = await fetch(`${targetUrl}/chat/completions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           // Add auth header if online
-          ...(this.isOnline && { Authorization: `Bearer ${process.env.CHUB_API_KEY}` }),
+          ...(this.isOnline && apiKey && { Authorization: `Bearer ${apiKey}` }),
         },
         body: JSON.stringify(requestBody),
       });
