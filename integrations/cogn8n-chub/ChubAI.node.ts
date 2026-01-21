@@ -485,8 +485,24 @@ export class ChubAI implements INodeType {
 		const resource = this.getNodeParameter('resource', 0) as string;
 		const operation = this.getNodeParameter('operation', 0) as string;
 
-		const credentials = await this.getCredentials('chubAiApi');
+		let credentials;
+		try {
+			credentials = await this.getCredentials('chubAiApi');
+		} catch (error) {
+			throw new NodeOperationError(
+				this.getNode(),
+				'Failed to retrieve Chub AI API credentials. Please ensure credentials are configured.',
+				{ description: error.message }
+			);
+		}
+
 		const apiKey = credentials.apiKey as string;
+		if (!apiKey) {
+			throw new NodeOperationError(
+				this.getNode(),
+				'API key is missing from credentials. Please configure your Chub AI API key.'
+			);
+		}
 		const baseUrl = (credentials.baseUrl as string) || 'https://api.chub.ai';
 
 		for (let i = 0; i < items.length; i++) {

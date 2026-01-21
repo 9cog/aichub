@@ -11,6 +11,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"os"
 	"strings"
 	"sync"
 	"time"
@@ -469,7 +470,10 @@ func hashPath(path string) uint64 {
 }
 
 func main() {
-	apiKey := "YOUR_CHUB_API_KEY" // In production, read from env or config
+	apiKey := os.Getenv("CHUB_API_KEY")
+	if apiKey == "" {
+		log.Fatal("CHUB_API_KEY environment variable is required")
+	}
 
 	fs := NewChubFS(apiKey)
 
